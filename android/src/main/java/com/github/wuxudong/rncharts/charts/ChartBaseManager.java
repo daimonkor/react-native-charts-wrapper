@@ -355,6 +355,9 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
         if (BridgeUtils.validate(propMap, ReadableType.Boolean, "drawGridLines")) {
             axis.setDrawGridLines(propMap.getBoolean("drawGridLines"));
         }
+        if (BridgeUtils.validate(propMap, ReadableType.Boolean, "drawMajorGridLines")) {
+            axis.setDrawMajorGridLines(propMap.getBoolean("drawMajorGridLines"));
+        }
 
         // style
         if (BridgeUtils.validate(propMap, ReadableType.Number, "textColor")) {
@@ -372,8 +375,14 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
         if (BridgeUtils.validate(propMap, ReadableType.Number, "gridColor")) {
             axis.setGridColor(propMap.getInt("gridColor"));
         }
+        if (BridgeUtils.validate(propMap, ReadableType.Number, "majorGridColor")) {
+            axis.setMajorGridColor(propMap.getInt("majorGridColor"));
+        }
         if (BridgeUtils.validate(propMap, ReadableType.Number, "gridLineWidth")) {
             axis.setGridLineWidth((float) propMap.getDouble("gridLineWidth"));
+        }
+        if (BridgeUtils.validate(propMap, ReadableType.Number, "majorGridLineWidth")) {
+            axis.setMajorGridLineWidth((float) propMap.getDouble("majorGridLineWidth"));
         }
         if (BridgeUtils.validate(propMap, ReadableType.Number, "axisLineColor")) {
             axis.setAxisLineColor(propMap.getInt("axisLineColor"));
@@ -398,6 +407,24 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
             }
 
             axis.enableGridDashedLine(lineLength, spaceLength, phase);
+        }
+        if (BridgeUtils.validate(propMap, ReadableType.Map, "majorGridDashedLine")) {
+            ReadableMap majorGridDashedLine = propMap.getMap("majorGridDashedLine");
+            float lineLength = 0;
+            float spaceLength = 0;
+            float phase = 0;
+
+            if (BridgeUtils.validate(majorGridDashedLine, ReadableType.Number, "lineLength")) {
+                lineLength = (float) majorGridDashedLine.getDouble("lineLength");
+            }
+            if (BridgeUtils.validate(majorGridDashedLine, ReadableType.Number, "spaceLength")) {
+                spaceLength = (float) majorGridDashedLine.getDouble("spaceLength");
+            }
+            if (BridgeUtils.validate(majorGridDashedLine, ReadableType.Number, "phase")) {
+                phase = (float) majorGridDashedLine.getDouble("phase");
+            }
+
+            axis.enableMajorGridDashedLine(lineLength, spaceLength, phase);
         }
 
         // limit lines
@@ -461,8 +488,11 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
         if (BridgeUtils.validate(propMap, ReadableType.Number, "granularity")) {
             axis.setGranularity((float) propMap.getDouble("granularity"));
         }
-        if (BridgeUtils.validate(propMap, ReadableType.Boolean, "granularityEnabled")) {
-            axis.setGranularityEnabled(propMap.getBoolean("granularityEnabled"));
+        if (BridgeUtils.validate(propMap, ReadableType.Number, "majorGranularity")) {
+            axis.setMajorGranularity((float) propMap.getDouble("majorGranularity"));
+        }
+        if (BridgeUtils.validate(propMap, ReadableType.Boolean, "majorGranularityEnabled")) {
+            axis.setMajorGranularityEnabled(propMap.getBoolean("majorGranularityEnabled"));
         }
         if (BridgeUtils.validate(propMap, ReadableType.Number, "labelCount")) {
             boolean labelCountForce = false;
