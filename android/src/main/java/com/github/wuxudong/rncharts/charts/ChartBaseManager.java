@@ -48,6 +48,7 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
     protected static final int HIGHLIGHTS = 8;
 
     protected static final int SET_DATA_AND_LOCK_INDEX = 9;
+    protected static final int ANIMATE_X = 10;
 
     abstract DataExtract getDataExtract();
 
@@ -374,6 +375,9 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
         }
         if (BridgeUtils.validate(propMap, ReadableType.Number, "gridColor")) {
             axis.setGridColor(propMap.getInt("gridColor"));
+        }
+        if (BridgeUtils.validate(propMap, ReadableType.Number, "majorGridColor")) {
+             axis.setMajorGridColor(propMap.getInt("majorGridColor"));
         }
         if (BridgeUtils.validate(propMap, ReadableType.Number, "majorGridColor")) {
             axis.setMajorGridColor(propMap.getInt("majorGridColor"));

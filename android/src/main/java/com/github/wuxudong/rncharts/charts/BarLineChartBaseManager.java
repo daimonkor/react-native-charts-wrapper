@@ -287,6 +287,7 @@ public abstract class BarLineChartBaseManager<T extends BarLineChartBase, U exte
                 "moveViewToAnimated", MOVE_VIEW_TO_ANIMATED,
                 "fitScreen", FIT_SCREEN,
                 "highlights", HIGHLIGHTS,
+                "animateX", ANIMATE_X,
                 "setDataAndLockIndex", SET_DATA_AND_LOCK_INDEX);
 
         if (commandsMap != null) {
@@ -328,6 +329,10 @@ public abstract class BarLineChartBaseManager<T extends BarLineChartBase, U exte
 
             case SET_DATA_AND_LOCK_INDEX:
                 setDataAndLockIndex(root, args.getMap(0));
+                return;
+
+            case ANIMATE_X:
+                root.animateX(args.getInt(0));
                 return;
         }
 

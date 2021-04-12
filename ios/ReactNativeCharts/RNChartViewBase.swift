@@ -270,6 +270,10 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
             axis.drawGridLinesEnabled = config["drawGridLines"].boolValue
         }
 
+        if config["drawMajorGridLines"].bool != nil {
+            axis.drawMajorGridLinesEnabled = config["drawMajorGridLines"].boolValue
+        }
+
         // style
         if let font = FontUtils.getFont(config) {
             axis.labelFont  = font
@@ -293,6 +297,14 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
 
         if config["gridLineWidth"].number != nil {
             axis.gridLineWidth = CGFloat(truncating: config["gridLineWidth"].numberValue)
+        }
+
+        if config["majorGridColor"].int != nil {
+            axis.majorGridColor = RCTConvert.uiColor(config["majorGridColor"].intValue)
+        }
+
+        if config["majorGridLineWidth"].number != nil {
+            axis.majorGridLineWidth = CGFloat(truncating: config["majorGridLineWidth"].numberValue)
         }
 
         if config["axisLineColor"].int != nil {
@@ -322,6 +334,27 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
             }
 
             axis.gridLineDashLengths = [lineLength, spaceLength]
+        }
+
+        if config["majorGridDashedLine"].exists() {
+            let majorGridDashedLine = config["majorGridDashedLine"]
+
+            var majorLineLength = CGFloat(0)
+            var majorSpaceLength = CGFloat(0)
+
+            if majorGridDashedLine["lineLength"].number != nil {
+                majorLineLength = CGFloat(truncating: majorGridDashedLine["lineLength"].numberValue)
+            }
+
+            if majorGridDashedLine["spaceLength"].number != nil {
+                majorSpaceLength = CGFloat(truncating: majorGridDashedLine["spaceLength"].numberValue)
+            }
+
+            if majorGridDashedLine["phase"].number != nil {
+                axis.majorGridLineDashPhase = CGFloat(truncating: majorGridDashedLine["phase"].numberValue)
+            }
+
+            axis.majorGridLineDashLengths = [majorLineLength, majorSpaceLength]
         }
 
         // limit lines
@@ -387,8 +420,16 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
             axis.granularity = config["granularity"].doubleValue
         }
 
+        if config["majorGranularity"].double != nil {
+            axis.granularity = config["majorGranularity"].doubleValue
+        }
+
         if config["granularityEnabled"].bool != nil {
             axis.granularityEnabled = config["granularityEnabled"].boolValue
+        }
+
+        if config["majorGranularityEnabled"].bool != nil {
+           axis.granularityEnabled = config["majorGranularityEnabled"].boolValue
         }
 
         if config["labelCount"].int != nil {
