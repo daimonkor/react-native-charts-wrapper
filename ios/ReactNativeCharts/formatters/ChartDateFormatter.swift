@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Charts
+import ChartsMod
 
 open class ChartDateFormatter: NSObject, IValueFormatter, IAxisValueFormatter {
 

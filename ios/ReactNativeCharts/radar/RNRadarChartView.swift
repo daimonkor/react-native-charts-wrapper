@@ -2,7 +2,7 @@
 //  Copyright wuxudong
 //
 
-import Charts
+import ChartsMod
 import SwiftyJSON
 
 class RNRadarChartView: RNYAxisChartViewBase {

@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import Charts
+import ChartsMod
 
 protocol RNBarLineChartBaseManager {
   var _bridge : RCTBridge? {get}
@@ -64,6 +64,13 @@ extension RNBarLineChartBaseManager {
     _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
       let view: RNBarLineChartViewBase = viewRegistry![reactTag] as! RNBarLineChartViewBase;
       view.setDataAndLockIndex(data);
+    }
+  }
+
+  func _animateX(_ reactTag: NSNumber, time: NSNumber) {
+    _bridge?.uiManager.addUIBlock { (uiManager: RCTUIManager?, viewRegistry:[NSNumber : UIView]?) in
+      let view: RNBarLineChartViewBase = viewRegistry![reactTag] as! RNBarLineChartViewBase;
+        view.animateX(time: time.doubleValue / 1000);
     }
   }
 }

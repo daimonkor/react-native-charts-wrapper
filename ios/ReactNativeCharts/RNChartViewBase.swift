@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Charts
+import ChartsMod
 import SwiftyJSON
 
 // In react native, because object-c is unaware of swift protocol extension. use baseClass as workaround
@@ -421,7 +421,7 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
         }
 
         if config["majorGranularity"].double != nil {
-            axis.granularity = config["majorGranularity"].doubleValue
+            axis.majorGranularity = config["majorGranularity"].doubleValue
         }
 
         if config["granularityEnabled"].bool != nil {
@@ -429,7 +429,7 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
         }
 
         if config["majorGranularityEnabled"].bool != nil {
-           axis.granularityEnabled = config["majorGranularityEnabled"].boolValue
+           axis.majorGranularityEnabled = config["majorGranularityEnabled"].boolValue
         }
 
         if config["labelCount"].int != nil {

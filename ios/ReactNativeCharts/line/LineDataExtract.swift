@@ -5,7 +5,7 @@
 import Foundation
 
 import SwiftyJSON
-import Charts
+import ChartsMod
 import UIKit
 
 class LineDataExtract : DataExtract {

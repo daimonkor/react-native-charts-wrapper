@@ -5,7 +5,7 @@
 import Foundation
 
 import SwiftyJSON
-import Charts
+import ChartsMod
 
 class BubbleDataExtract : DataExtract {
     override func createData() -> ChartData {

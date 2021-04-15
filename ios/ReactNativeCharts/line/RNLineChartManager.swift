@@ -50,4 +50,8 @@ open class RNLineChartManager: RCTViewManager, RNBarLineChartBaseManager {
     (self as RNBarLineChartBaseManager)._setDataAndLockIndex(reactTag, data: data)
   }
 
+  func animateX(_ reactTag: NSNumber, time: NSNumber) {
+    (self as RNBarLineChartBaseManager)._animateX(reactTag, time: time)
+  }
+
 }

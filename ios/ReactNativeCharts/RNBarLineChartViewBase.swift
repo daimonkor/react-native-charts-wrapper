@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import Charts
+import ChartsMod
 import SwiftyJSON
 
 class RNBarLineChartViewBase: RNYAxisChartViewBase {
@@ -231,6 +231,10 @@ class RNBarLineChartViewBase: RNYAxisChartViewBase {
             updateZoom(zoom)
             savedZoom = nil
         }
+    }
+
+    func animateX(time: Double) {
+        barLineChart.animate(xAxisDuration: time)
     }
 
     func setDataAndLockIndex(_ data: NSDictionary) {
