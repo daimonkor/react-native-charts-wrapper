@@ -341,6 +341,14 @@ public abstract class BarLineChartBaseManager<T extends BarLineChartBase, U exte
 
     private void setDataAndLockIndex(T root, ReadableMap map) {
         YAxis.AxisDependency axisDependency = root.getAxisLeft().isEnabled() ? YAxis.AxisDependency.LEFT : YAxis.AxisDependency.RIGHT;
+
+        if( map.getMap("xAxis") != null){
+            this.setXAxis(root, map.getMap("xAxis"));
+        }
+        if( map.getMap("yAxis") != null){
+            this.setYAxis(root, map.getMap("yAxis"));
+        }
+
         Transformer transformer = root.getTransformer(axisDependency);
 
         RectF contentRect = root.getViewPortHandler().getContentRect();
